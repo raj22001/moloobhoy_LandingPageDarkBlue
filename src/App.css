@@ -1,4 +1,4 @@
-@keyframes rotate-earth {
+/* @keyframes rotate-earth {
   from {
     transform: rotate(0deg);
   }
@@ -8,8 +8,8 @@
 }
 
 .rotating-earth {
-  animation: rotate-earth 60s linear infinite; /* Adjust the duration (60s) according to your preference */
-}
+  animation: rotate-earth 60s linear infinite; /* Adjust the duration (60s) according to your preference 
+} */
 
 .position-1 {
   position: absolute;
@@ -56,7 +56,7 @@
 }
 
 .animate-scale {
-  animation: scale 0.5s ease-in-out forwards;
+  animation: scale 3s ease-in-out forwards;
 }
 
 @keyframes animate-scale-in {
@@ -69,7 +69,7 @@
 }
 
 .animate-scale-in {
-  animation: animate-scale-in 1s ease-in-out forwards;
+  animation: animate-scale-in 1s ease-in-out;
 }
 
 h6 {
@@ -187,6 +187,28 @@ span:nth-child(3) {
 }
 .btn-5:hover:before {
   --progress: 100%;
+}
+
+@keyframes scale-in-out {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Apply the animation to the image when hovered */
+.animate-scale-in-out {
+  animation: scale-in-out 2s ease-in-out infinite !important;
+}
+
+/* Reset the animation when the hover ends */
+.animate-scale-in-out:hover {
+  animation-play-state: paused;
 }
 
 /* span:nth-child(4) {

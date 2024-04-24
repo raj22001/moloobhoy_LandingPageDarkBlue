@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { TypeAnimation } from "react-type-animation";
 import { ImCircleRight } from "react-icons/im";
+// import backgroundImage from "../assets/backgroundImage.png";
+import { Box } from "../data/Box";
 
 const NumberCountDown = ({ setDisplayerath }) => {
   const [currentNumber, setCurrentNumber] = useState(1905);
@@ -41,11 +43,11 @@ const NumberCountDown = ({ setDisplayerath }) => {
   }, [showRiceStadium]);
 
   return (
-    <div className="bg-DarkBlue h-[100vh]">
+    <div className="bg-BlueBackground h-[100vh] " >
       <div className="relative h-[100vh] text-white text-center  flex flex-col justify-center items-center ">
         <div className="flex justify-center items-center text-4xl">
           {showText && (
-            <h1 className="text-4xl font-normal font-optima text-center">
+            <h1 className="text-6xl  font-semibold font-optima text-center">
               <TypeAnimation
                 sequence={[
                   1000,
@@ -57,7 +59,7 @@ const NumberCountDown = ({ setDisplayerath }) => {
               />
             </h1>
           )}
-          <span className="font-normal font-optima text-4xl ">{currentNumber}</span>
+          <span className="font-semibold font-optima text-6xl ">{currentNumber}</span>
         </div>
         {showRiceStadium && (
           <div
@@ -68,9 +70,8 @@ const NumberCountDown = ({ setDisplayerath }) => {
             }`}
           >
             <h6 className="text-white text-2xl">
-              <span className="px-0.5">Rice</span>
-              <span className="px-0.5">Stadium</span>
-              <span className="px-0.5">Texas</span>{" "}
+              <span className="px-0.5">MUMBAI , </span>
+              <span className="px-1">INDIA</span>
             </h6>
           </div>
         )}
@@ -82,9 +83,9 @@ const NumberCountDown = ({ setDisplayerath }) => {
             </h1>
             <button
               onClick={() => setDisplayerath(true)}
-              className="ml-4 btn-5 hover:text-black"
+              className="ml-4"
             >
-              <ImCircleRight size={25} color="#ffffff" className="icons" />
+              <Box />
             </button>
           </div>
         )}

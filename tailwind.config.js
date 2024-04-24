@@ -8,6 +8,7 @@ export default {
       },
       colors: {
         DarkBlue: "#05243A",
+        BlueBackground: "#0b1828",
       },
       screens: {
         mobile: "220px",

@@ -6,7 +6,9 @@ import hoverTagImage3 from "../assets/hoverImage3.png";
 import hoverTagImage4 from "../assets/hoverImage4.png";
 import hoverTagImage5 from "../assets/hoverImage5.png";
 
-import backgroundImage from "../assets/backgroundImage.png";
+// import backgroundImage from "../assets/backgroundImage.png";
+import circle from "../assets/circle.png";
+import smallRader from "../assets/smallradar.png";
 
 import logo from "../assets/logo.jpg";
 import logo2 from "../assets/logo2.png";
@@ -17,28 +19,15 @@ import { IoCloseSharp } from "react-icons/io5";
 import NumberCountDown from "./NumberCountDown";
 import { Link } from "react-router-dom";
 
+import raderVideo from "../assets/raderVideo3.mp4";
+
+// import ranomRaderImage from "../assets/randomCircle.png";
+
 function LandingPage() {
   const [isHovering, setIsHovering] = useState(false);
   const [hoveredDiv, setHoveredDiv] = useState(null);
   const [hamburgerMenuData, setHamburgerMenuData] = useState(true);
   const [displayerath, setDisplayerath] = useState(false);
-
-  const getImageSource = () => {
-    switch (hoveredDiv) {
-      case 1:
-        return hoverTagImage1;
-      case 2:
-        return hoverTagImage2;
-      case 3:
-        return hoverTagImage3;
-      case 4:
-        return hoverTagImage4;
-      case 5:
-        return hoverTagImage5;
-      default:
-        return earthImage;
-    }
-  };
 
   const getTextContent = () => {
     switch (hoveredDiv) {
@@ -116,7 +105,14 @@ function LandingPage() {
   return (
     <>
       {displayerath ? (
-        <div className="w-full h-screen mobile:flex mobile:flex-col md:justify-center md:items-center sm:items-start  md:relative overflow-y-hidden overflow-x-hidden " style={{ backgroundImage: `url(${backgroundImage})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+        <div
+          className="w-full h-screen mobile:flex mobile:flex-col md:justify-center md:items-center sm:items-start  md:relative overflow-y-hidden overflow-x-hidden  bg-BlueBackground"
+          // style={{
+          //   backgroundImage: `url(${backgroundImage})`,
+          //   backgroundSize: "cover",
+          //   backgroundPosition: "center",
+          // }}
+        >
           <div className="md:hidden sm:block sm:w-[100%] h-[100vh] ">
             <div className="h-[10%] sm:text-center mobile:text-center border-b-[1px] border-white border-opacity-20">
               <div className="flex w-[96%] justify-between items-center h-full">
@@ -140,9 +136,10 @@ function LandingPage() {
                 </p>
               </div>
             </div>
+
             <div className="flex justify-center items-center h-[80%] w-full mx-auto">
               {!hamburgerMenuData ? (
-                <div className="w-[96%] flex flex-col justify-center items-center">
+                <div className="w-[80%] flex flex-col justify-center items-center">
                   {mobileData.map((data) => (
                     <div
                       key={data.id}
@@ -164,9 +161,9 @@ function LandingPage() {
               ) : (
                 <div>
                   <img
-                    src={earthImage}
+                    src={circle}
                     alt="Earth"
-                    className={`mobile:w-[90%] mobile:h-[100%] sm:w-[80%] sm:h-[70%] flex justify-center relative items-center object-contain rotating-earth ${
+                    className={`mobile:w-[90%] mobile:h-[100%] sm:w-[80%] sm:h-[70%] flex justify-center relative items-center object-contain  ${
                       isHovering ? "" : "relative"
                     }`}
                   />
@@ -178,13 +175,18 @@ function LandingPage() {
           <div className="w-[65%] h-[70%] relative mobile:hidden sm:hidden md:block">
             <div className="w-full h-full ">
               {/* Earth image */}
-              <img
-                src={getImageSource()}
-                alt="Earth"
-                className={`w-[90%] h-[100%] flex justify-center relative items-center object-contain rotating-earth ${
+
+              <video
+                src={raderVideo}
+                controls={false}
+                autoPlay={true}
+                loop
+                muted
+                className={`w-[90%] h-[100%] flex justify-center relative items-center object-contain ${
                   isHovering ? "" : "relative"
                 }`}
               />
+
               {/* Five h1 tags */}
 
               {hoveredDiv && (
@@ -212,7 +214,7 @@ function LandingPage() {
                     }`}
                   >
                     {hoveredDiv === 1 && (
-                      <span className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-scale"></span>
+                      <p className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-scale"></p>
                     )}
                   </p>
                   <h1 className=" text-white font-optima font-normal ml-1.5">
@@ -234,7 +236,7 @@ function LandingPage() {
                     }`}
                   >
                     {hoveredDiv === 2 && (
-                      <span className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-scale"></span>
+                      <p className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-scale"></p>
                     )}
                   </p>
                 </div>
@@ -250,7 +252,7 @@ function LandingPage() {
                     }`}
                   >
                     {hoveredDiv === 3 && (
-                      <span className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-scale"></span>
+                      <p className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-scale"></p>
                     )}
                   </p>
                   <h1 className="ml-1.5 font-optima font-normal">EMME</h1>
@@ -267,7 +269,7 @@ function LandingPage() {
                     }`}
                   >
                     {hoveredDiv === 4 && (
-                      <span className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-scale"></span>
+                      <p className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-scale"></p>
                     )}
                   </p>
                   <h1 className="ml-1.5 font-optima font-normal text-white">
@@ -286,15 +288,49 @@ function LandingPage() {
                     }`}
                   >
                     {hoveredDiv === 5 && (
-                      <span className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-scale"></span>
+                      <p className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-scale"></p>
                     )}
                   </p>
-                  <h1 className="ml-1.5 font-optima font-normal text-white">
+                  <h1 className="ml-1.5 font-optima relative font-normal text-white">
                     Molobhoy Marine Services LLC
                   </h1>
                 </div>
               </div>
             </div>
+            <div className="w-20 h-20 flex -top-[90%]">
+              <img
+                src={smallRader}
+                alt=""
+                className={`w-full h-full object-contain opacity-50 ${
+                  hoveredDiv === 2 ? "animate-scale-in-out opacity-75" : ""
+                }`}
+                onMouseEnter={() => setHoveredDiv(2)}
+                onMouseLeave={() => setHoveredDiv(null)}
+              />
+            </div>
+          </div>
+          <div className="w-20 h-20 flex absolute  left-[80%] top-[10%] ">
+            <img
+              src={smallRader}
+              alt=""
+              className={`w-full h-full object-contain ${
+                hoveredDiv === 3 ? "animate-scale-in-out" : ""
+              }`}
+              onMouseEnter={() => setHoveredDiv(3)}
+              onMouseLeave={() => setHoveredDiv(null)}
+            />
+          </div>
+
+          <div className="w-20 h-20 flex absolute  left-[90%] top-[80%] ">
+            <img
+              src={smallRader}
+              alt=""
+              className={`w-full h-full object-contain  ${
+                hoveredDiv === 4 ? "animate-scale-in-out" : ""
+              }`}
+              onMouseEnter={() => setHoveredDiv(4)}
+              onMouseLeave={() => setHoveredDiv(null)}
+            />
           </div>
         </div>
       ) : (

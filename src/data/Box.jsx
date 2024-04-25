@@ -1,5 +1,5 @@
 import React from "react";
-import boximage from "../assets/box.png"
+import boximage from "../assets/box2.png"
 
 export const Box = () => {
   return (

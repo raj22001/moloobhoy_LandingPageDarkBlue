@@ -5,6 +5,7 @@ export default {
     extend: {
       fontFamily: {
         optima: ["Optima LT W02 Roman", "OptimaRoman", "sans-serif"],
+        disket: ["Disket Mono", "serif"],
       },
       colors: {
         DarkBlue: "#05243A",
@@ -12,6 +13,9 @@ export default {
       },
       screens: {
         mobile: "220px",
+      },
+      fontWeight: {
+        "custom-extrabold": "900",
       },
     },
   },

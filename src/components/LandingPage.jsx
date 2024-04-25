@@ -8,18 +8,19 @@ import hoverTagImage5 from "../assets/hoverImage5.png";
 
 // import backgroundImage from "../assets/backgroundImage.png";
 import circle from "../assets/circle.png";
-import smallRader from "../assets/smallradar.png";
+import smallRader from "../assets/smallradarlight.png";
 
 import logo from "../assets/logo.jpg";
 import logo2 from "../assets/logo2.png";
 import logo3 from "../assets/logo3.png";
-import { useEffect, useState } from "react";
+import logo4 from "../assets/logo4.png";
+import { useEffect, useRef, useState } from "react";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { IoCloseSharp } from "react-icons/io5";
 import NumberCountDown from "./NumberCountDown";
 import { Link } from "react-router-dom";
 
-import raderVideo from "../assets/raderVideo3.mp4";
+import raderVideo from "../assets/raderVideo12.mp4";
 
 // import ranomRaderImage from "../assets/randomCircle.png";
 
@@ -47,15 +48,15 @@ function LandingPage() {
   const getLogoSource = () => {
     switch (hoveredDiv) {
       case 1:
-        return logo;
+        return logo4;
       case 2:
         return logo2;
       case 3:
         return logo3;
       case 4:
-        return logo;
+        return logo4;
       case 5:
-        return logo;
+        return logo4;
       default:
         return null;
     }
@@ -102,6 +103,21 @@ function LandingPage() {
     5: "ml-[-30%]",
   };
 
+  const [videoEnded, setVideoEnded] = useState(false);
+  // const videoRef = useRef(null);
+
+  const videoRef = useRef(null);
+
+  const handleVideoEnded = () => {
+    setVideoEnded(true); // Set state to indicate video has ended
+  };
+
+  const handleVideoPlay = () => {
+    if (videoEnded) {
+      videoRef.current.currentTime = 0; // Reset video to beginning
+      setVideoEnded(false); // Reset state
+    }
+  };
   return (
     <>
       {displayerath ? (
@@ -137,9 +153,9 @@ function LandingPage() {
               </div>
             </div>
 
-            <div className="flex justify-center items-center h-[80%] w-full mx-auto">
+            <div className="flex justify-center items-center h-[80%] w-full  mx-auto">
               {!hamburgerMenuData ? (
-                <div className="w-[80%] flex flex-col justify-center items-center">
+                <div className="w-[80%] flex flex-col justify-center  items-center">
                   {mobileData.map((data) => (
                     <div
                       key={data.id}
@@ -160,10 +176,16 @@ function LandingPage() {
                 </div>
               ) : (
                 <div>
-                  <img
-                    src={circle}
-                    alt="Earth"
-                    className={`mobile:w-[90%] mobile:h-[100%] sm:w-[80%] sm:h-[70%] flex justify-center relative items-center object-contain  ${
+                  <video
+                    ref={videoRef}
+                    src={raderVideo}
+                    controls={false}
+                    autoPlay
+                    loop
+                    muted
+                    onEnded={handleVideoEnded}
+                    onPlay={handleVideoPlay}
+                    className={`mobile:w-[100%] mobile:h-[100%] sm:w-[80%] sm:h-[70%] flex justify-center relative items-center object-contain  ${
                       isHovering ? "" : "relative"
                     }`}
                   />
@@ -177,11 +199,14 @@ function LandingPage() {
               {/* Earth image */}
 
               <video
+                ref={videoRef}
                 src={raderVideo}
                 controls={false}
-                autoPlay={true}
+                autoPlay
                 loop
                 muted
+                onEnded={handleVideoEnded}
+                onPlay={handleVideoPlay}
                 className={`w-[90%] h-[100%] flex justify-center relative items-center object-contain ${
                   isHovering ? "" : "relative"
                 }`}
@@ -191,12 +216,13 @@ function LandingPage() {
 
               {hoveredDiv && (
                 <div className="absolute inset-0 flex flex-col justify-between h-[55%] my-auto items-center ">
+                  <div className=""></div>
                   <img
                     src={getLogoSource()}
                     alt=""
-                    className="w-[50%] h-[50%] mr-[10%] object-contain"
+                    className="w-[45%] h-[50%] mr-[10%] object-contain"
                   />
-                  <p className="text-white font-optima font-normal w-[40%] mt-[5%]  text-center relative mr-[10%]">
+                  <p className="text-white font-optima font-normal w-[40%] mb-[5%]  text-center relative mr-[10%]">
                     {getTextContent()}
                   </p>
                 </div>
@@ -214,10 +240,10 @@ function LandingPage() {
                     }`}
                   >
                     {hoveredDiv === 1 && (
-                      <p className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-scale"></p>
+                      <p className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-ping"></p>
                     )}
                   </p>
-                  <h1 className=" text-white font-optima font-normal ml-1.5">
+                  <h1 className=" text-white text-xl font-optima font-normal ml-1.5">
                     A.S Moloobhoy Pvt Ltd
                   </h1>
                 </div>
@@ -228,7 +254,9 @@ function LandingPage() {
                   className="position-2 text-white flex  cursor-pointer"
                 >
                   <Link to="/about">
-                    <h1 className="mr-1.5 font-optima font-normal">About</h1>
+                    <h1 className="mr-1.5 text-xl font-optima font-normal">
+                      About
+                    </h1>
                   </Link>
                   <p
                     className={`w-7 h-7 border border-white rounded-full text-white ${
@@ -236,7 +264,7 @@ function LandingPage() {
                     }`}
                   >
                     {hoveredDiv === 2 && (
-                      <p className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-scale"></p>
+                      <p className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-ping"></p>
                     )}
                   </p>
                 </div>
@@ -252,10 +280,12 @@ function LandingPage() {
                     }`}
                   >
                     {hoveredDiv === 3 && (
-                      <p className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-scale"></p>
+                      <p className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-ping"></p>
                     )}
                   </p>
-                  <h1 className="ml-1.5 font-optima font-normal">EMME</h1>
+                  <h1 className="ml-1.5 font-optima text-xl font-normal">
+                    EMME
+                  </h1>
                 </div>
 
                 <div
@@ -269,10 +299,10 @@ function LandingPage() {
                     }`}
                   >
                     {hoveredDiv === 4 && (
-                      <p className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-scale"></p>
+                      <p className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-ping"></p>
                     )}
                   </p>
-                  <h1 className="ml-1.5 font-optima font-normal text-white">
+                  <h1 className="ml-1.5 font-optima text-xl font-normal text-white">
                     A.S Moloobhoy & Sons Pvt Ltd
                   </h1>
                 </div>
@@ -288,10 +318,10 @@ function LandingPage() {
                     }`}
                   >
                     {hoveredDiv === 5 && (
-                      <p className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-scale"></p>
+                      <p className="w-[2%] h-[2%] p-1 bg-white rounded-full mt-[35%] animate-ping"></p>
                     )}
                   </p>
-                  <h1 className="ml-1.5 font-optima relative font-normal text-white">
+                  <h1 className="ml-1.5 font-optima  text-xl  relative font-normal text-white">
                     Molobhoy Marine Services LLC
                   </h1>
                 </div>
@@ -302,7 +332,7 @@ function LandingPage() {
                 src={smallRader}
                 alt=""
                 className={`w-full h-full object-contain opacity-50 ${
-                  hoveredDiv === 2 ? "animate-scale-in-out opacity-75" : ""
+                  hoveredDiv === 2 ? "animate-scale-in-out opacity-95" : ""
                 }`}
                 onMouseEnter={() => setHoveredDiv(2)}
                 onMouseLeave={() => setHoveredDiv(null)}
@@ -313,8 +343,8 @@ function LandingPage() {
             <img
               src={smallRader}
               alt=""
-              className={`w-full h-full object-contain ${
-                hoveredDiv === 3 ? "animate-scale-in-out" : ""
+              className={`w-full h-full object-contain opacity-50 ${
+                hoveredDiv === 3 ? "animate-scale-in-out opacity-95" : ""
               }`}
               onMouseEnter={() => setHoveredDiv(3)}
               onMouseLeave={() => setHoveredDiv(null)}
@@ -325,8 +355,8 @@ function LandingPage() {
             <img
               src={smallRader}
               alt=""
-              className={`w-full h-full object-contain  ${
-                hoveredDiv === 4 ? "animate-scale-in-out" : ""
+              className={`w-full h-full object-contain opacity-50 ${
+                hoveredDiv === 4 ? "animate-scale-in-out opacity-95" : ""
               }`}
               onMouseEnter={() => setHoveredDiv(4)}
               onMouseLeave={() => setHoveredDiv(null)}
